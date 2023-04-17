@@ -1,0 +1,58 @@
+- name: Install network tools
+  hosts: Debian-Desktop
+  become: true
+  become_method: sudo
+  
+  tasks:
+  - name: Install git
+    apt:  name=git update_cache=yes
+
+  - name: Install net-tools # arp, ifconfig, netstat, rarp, nameif, route
+    apt:  name=net-tools
+
+  - name: Install arp-scan
+    apt:  name=arp-scan
+
+  - name: Install dnsutils # dig, nslookup, nsupdate 
+    apt:  name=dnsutils
+
+  - name: Install nmap
+    apt:  name=nmap
+
+  - name: Install rsync
+    apt:  name=rsync
+
+  - name: Install inetutils-telnet # telnet client
+    apt:  name=inetutils-telnet
+
+  - name: Install inetutils-ftp # ftp client
+    apt:  name=inetutils-ftp
+
+  - name: Install inetutils-ping # ping util
+    apt:  name=inetutils-ping
+
+  - name: Install fping # fping util
+    apt:  name=fping
+
+  - name: Install inetutils-traceroute # traceroute util
+    apt:  name=inetutils-traceroute
+
+  - name: Install whois
+    apt:  name=whois
+    
+  - name: Install wget
+    apt:  name=wget
+
+  - name: Install curl
+    apt:  name=curl
+
+  - name: Install wireless-tools
+    apt:  name=wireless-tools
+
+  - name: Install openssh-server
+    apt: name=openssh-server
+
+  - name: Install tcpdump
+    apt: name=tcpdump
+
+ 

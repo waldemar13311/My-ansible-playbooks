@@ -1,0 +1,18 @@
+- name: Install nala
+  hosts: Debian-Desktop
+  become: true
+  become_method: sudo
+
+  tasks:
+  - name: Add the GPG key
+    ansible.builtin.get_url:
+      url: https://deb.volian.org/volian/scar.key
+      dest: /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg
+
+  - name: Add the Volian Scar repositories
+    ansible.builtin.apt_repository:
+      filename: volian-archive-scar-unstable.list # path - /etc/apt/sources.list.d/volian-archive-scar-unstable.list
+      repo: deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main
+  
+  - name: Install nala
+    apt:  name=nala-legacy update_cache=yes

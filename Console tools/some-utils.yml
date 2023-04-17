@@ -1,0 +1,63 @@
+- name: Install some console utils
+  hosts: Debian-Desktop
+  become: true
+  become_method: sudo
+  
+  tasks:
+  - name: Install bash-completion
+    apt:  name=bash-completion update_cache=yes
+
+  - name: Install vim
+    apt:  name=vim
+
+  - name: Install mlocate
+    apt:  name=mlocate
+
+  - name: Install crontab
+    apt:  name=cron
+
+  - name: Start and enable cron
+    service: 
+      name: cron
+      state: started
+      enabled: true
+      
+  - name: Install lsof
+    apt:  name=lsof
+
+  - name: Install parted
+    apt:  name=parted
+
+  - name: Install tree
+    apt:  name=tree
+
+  - name: Install psmisc # pstree
+    apt:  name=psmisc
+
+  - name: Install cmake
+    apt:  name=cmake
+
+  - name: Install snap
+    apt:  name=snapd
+  
+  - name: Install snap core
+    command:
+      cmd: snap install core  
+
+  - name: Enable snap
+    service: 
+      name: snapd
+      state: started
+      enabled: true
+    
+  - name: Install pip
+    apt:  name=pip
+
+  - name: Install neofetch
+    apt:  name=neofetch
+
+  - name: Install ipcalc
+    apt:  name=ipcalc
+
+  - name: Install ncdu
+    apt:  name=ncdu

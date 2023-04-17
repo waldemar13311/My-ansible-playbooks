@@ -1,0 +1,16 @@
+- name: Install and enable network-manager
+  hosts: Debian-Desktop
+  become: true
+  become_method: sudo
+  
+  tasks:
+  - name: Install NetworkManager
+    apt:  name=network-manager update_cache=yes
+    notify: Enable network-manager
+
+  handlers:
+  - name: Enable network-manager
+    service: 
+      name: NetworkManager
+      state: started
+      enabled: true
