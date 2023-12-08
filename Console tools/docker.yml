@@ -1,4 +1,4 @@
-- name: Install nala
+- name: Install docker on debian
   hosts: Debian-Desktop
   become: true
   become_method: sudo
